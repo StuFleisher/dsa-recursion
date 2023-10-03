@@ -64,32 +64,70 @@ function revString(str) {
 
 /** findIndex: return the index of val in arr (or -1 if val is not present). */
 
-//"a", a => 0
-//"a,b", b => 1
-//"abc", c => 2
-//abcd, d => 3
-
-originalLength - lengthWhereFound
-3 - (1) = 2
-3 - 2 = 1
-4 - (1)=3
 
 function findIndex(arr, val) {
-  if (arr.length > 0) {
+  if (arr.length === 0) { return -1; }
 
-    if (arr[0] === val) {
-      return arr.length;
-    } else {
-      return arr.length - findIndex(arr.slice(1), val);
-    }
-  }
-  return -1;
+  if (arr[0] === val) { return 0; }
+
+  let res = findIndex(arr.slice(1), val);
+
+  if (res === -1){ return -1; }
+
+  return res + 1;
 }
+
+
+
 
 /** gatherStrings: given an object, return an array of all of the string values. */
 
-function gatherStrings(obj) {
 
+// function gatherStrings(obj) {
+//   newArr = Object.values(obj);
+//   if (newArr.every(a => typeof(a) === "string")){
+//     return newArr;
+//   }
+
+//   for (let key in obj){
+//     if (typeof(obj[key]) !== "string"){
+//       delete obj[key]
+//       break;
+//     }
+//   }
+
+//   let res = gatherStrings(obj);
+//   console.log("res ----->", res)
+//   // if (Array.isArray(res)) return res;
+//   return res;
+// }
+
+function gatherStrings(obj) {
+  console.log("input ---->", obj);
+  // create a results array
+  let res = [];
+  // base case: obj is empty
+  // if (Object.keys(obj).length === 0) return res;
+
+  for (let key in obj){
+    if (typeof(obj[key]) === "object"){
+      res.concat(gatherStrings(obj[key]));
+      console.log("res after concat", res);
+    }
+    if (typeof(obj[key] === "string")){
+      res.push(obj[key]);
+    }
+
+    delete obj[key];
+  }
+  // check each key in the obj to verify it's an obj
+    // if obj; recursive call w sub-obj,
+      // insert res in res array
+    // if string, append to res array
+    // anything else, delete obj[key]
+  // return re
+  // console.log("strings arr", res);
+  return res;
 }
 
 // FURTHER STUDY
