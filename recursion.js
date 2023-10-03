@@ -107,14 +107,12 @@ function gatherStrings(obj) {
   // create a results array
   let res = [];
   // base case: obj is empty
-  // if (Object.keys(obj).length === 0) return res;
 
   for (let key in obj) {
     if (typeof (obj[key]) === "object") {
       res = res.concat(gatherStrings(obj[key]));
-      console.log("res after concat", res);
     }
-    if (typeof (obj[key] === "string")) {
+    if (typeof (obj[key]) === "string") {
       res.push(obj[key]);
     }
 
@@ -125,8 +123,8 @@ function gatherStrings(obj) {
   // insert res in res array
   // if string, append to res array
   // anything else, delete obj[key]
-  // return re
-  // console.log("strings arr", res);
+  // return res
+
   return res;
 }
 
@@ -136,6 +134,35 @@ function gatherStrings(obj) {
  * return true if val is in array, false if not present). */
 
 function binarySearch(arr, val) {
+  //base case 2: impossible for it to be there
+  //base case 1: found it
+  //pick middle index
+  //check if we are high or low
+  //call again with 1/2 of the array
+  if (arr.length === 0) {
+    return false;
+  }
+
+  [1, 2, 3, 4], 4;
+  i[2] = 3;
+
+  let indexToCheck = Math.floor(arr.length / 2);
+
+  if (array[indexToCheck] === val) {
+    return true;
+  }
+  if (array[indexToCheck] < val) { //keep right
+    return binarySearch(arr.slice(indexToCheck + 1, arr.length), val);
+  }
+  if (array[indexToCheck] > val) { //keep left
+    return binarySearch(arr.slice(0, indexToCheck), val);
+  }
+
+
+  let testVal = ;
+
+
+
 
 }
 
