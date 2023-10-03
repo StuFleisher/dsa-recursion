@@ -72,7 +72,7 @@ function findIndex(arr, val) {
 
   let res = findIndex(arr.slice(1), val);
 
-  if (res === -1){ return -1; }
+  if (res === -1) { return -1; }
 
   return res + 1;
 }
@@ -109,22 +109,22 @@ function gatherStrings(obj) {
   // base case: obj is empty
   // if (Object.keys(obj).length === 0) return res;
 
-  for (let key in obj){
-    if (typeof(obj[key]) === "object"){
-      res.concat(gatherStrings(obj[key]));
+  for (let key in obj) {
+    if (typeof (obj[key]) === "object") {
+      res = res.concat(gatherStrings(obj[key]));
       console.log("res after concat", res);
     }
-    if (typeof(obj[key] === "string")){
+    if (typeof (obj[key] === "string")) {
       res.push(obj[key]);
     }
 
     delete obj[key];
   }
   // check each key in the obj to verify it's an obj
-    // if obj; recursive call w sub-obj,
-      // insert res in res array
-    // if string, append to res array
-    // anything else, delete obj[key]
+  // if obj; recursive call w sub-obj,
+  // insert res in res array
+  // if string, append to res array
+  // anything else, delete obj[key]
   // return re
   // console.log("strings arr", res);
   return res;
